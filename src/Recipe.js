@@ -1,73 +1,33 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
-import axios from 'axios';
+import _ from "lodash";
+import { Table } from "reactstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-
-import RecipeDetails from "./RecipeDetails";
-
-class Recipe extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            deetname: "",
-            deetingredients: "",
-            deetdescription: "",
-            deetimage: "",
-            _id: ""
-        }
-    }
-
-    showinfo = (event) => {
-        this.setState({
-            deetname: this.props.name,
-            deetingredients: this.props.ingredients,
-            deetdescription: this.props.description,
-            deetimage: this.props.image,
-            deet_id: this.props._id
-        });
-
-    };
+import { RecipeDetails } from './RecipeDetails';
 
 
 
+export class Recipe extends Component {
+    render(props) {
 
-
-    render() {
+        const {
+    name
+} = this.props
 
         return (
+            <Table dark  style={{ display: 'flex', justifyContent: 'center', backgroundColor: "black", color: "white" }}>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button>
 
-            <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: "white" }}>
-
-
-                <Table dark >
-
-                    <tbody><tr></tr>
-                        <tr>
-                            <td>{this.props.name}
-                            </td>
-                        </tr>
-
-
-                        <Router>
-                            <button onClick={this.showinfo}>
-                                <Link to="/props">Recipe Details</Link>
+                                <Link to={this.props.name}>{this.props.name}</Link>
                             </button>
+                        </td>
+                    </tr>
 
-                            <Route path="/props" render={() => <RecipeDetails name={this.state.deetname} ingredients={this.state.deetingredients} description={this.state.deetdescription} image={this.state.deetimage} _id={this.state.deet_id} getall={this.props.getall}/>} />
-
-                        </Router>
-
-
-                    </tbody>
-
-                </Table>
-
-            </div>
-
-        )
+                </tbody>
+            </Table>
+        );
     }
 }
-
 export default Recipe;

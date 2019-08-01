@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Recipe from "./Recipe";
 import axios from 'axios';
+import { Table } from 'reactstrap';
 
 
 export default class RecipeIndex extends Component {
@@ -28,25 +29,22 @@ export default class RecipeIndex extends Component {
         this.getall();
     }
 
-    render() {
+
+    render(props) {
         return (
-            <div >
-                <h2>List of Recipes </h2>
+            <div class="formDiv">
+                <div id="random"> </div>
+                <h2>Recipes</h2>
+                <Table>
+                        {this.props.dataSent.map((item) => (
 
-                <table >
+                                 <Recipe passedFunction={this.props.passedFunction} name={item.name} description={item.description} ingredients={item.ingredients} image={item.image}/>       
 
-                    <tbody><tr><th>Recipes</th>
-                    </tr>{(this.state.data).map((item) =>
-                        (<Recipe viewall={this.props.viewall}
-                            name={item.name} ingredients={item.ingredients} description={item.description} image={item.image} _id={item._id} getall={this.getall}
-                        ></Recipe>))}
-
-                    </tbody>
-
-                </table>
+                        ))}
+                </Table>
             </div>
-
 
         );
     }
 }
+

@@ -35,7 +35,8 @@ class RecipeDetails extends Component {
                 <br />
                 {this.props.description}
                 <br />
-                {this.props.image}
+                <img src={this.props.image}></img>
+
                 <br/>
                 <button onClick={this.delete}>Delete
     </button>

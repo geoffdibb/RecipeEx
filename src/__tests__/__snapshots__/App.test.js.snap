@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clicks a button 1`] = `ShallowWrapper {}`;
+
+exports[`clicks a button 2`] = `ShallowWrapper {}`;
